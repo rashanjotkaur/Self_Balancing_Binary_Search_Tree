@@ -1,3 +1,4 @@
+// Even if duplicates are present in input, ignore them because in BST duplicates are not allowed
 int height_fun(struct Node *root){
     if(root==NULL)
         return 0;
@@ -15,6 +16,7 @@ struct Node *rightRotation(struct Node *root){
     t1->right=root;
     root->left=t2;
     
+    // first update the height of child then update the height of parent
     root->height=1+max(height_fun(root->left),height_fun(root->right));
     t1->height=1+max(height_fun(t1->left),height_fun(t1->right));
     
@@ -27,6 +29,7 @@ struct Node *leftRotation(struct Node *root){
     t1->left=root;
     root->right=t2;
     
+    // first update the height of child then update the height of parent
     root->height=1+max(height_fun(root->left),height_fun(root->right));
     t1->height=1+max(height_fun(t1->left),height_fun(t1->right));
     
